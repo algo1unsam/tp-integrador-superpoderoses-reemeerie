@@ -28,8 +28,12 @@ describe "Superpoderoses" {
 	
 	const fragmentadorMonopolios
 	const educadorPublico
-
-	fixture {
+		
+	
+	method initialize(){
+		
+		//aca pueden inicializar todo lo que quieran dentro de este describe "Superpoderoses", cada describe puede tener hasta 1 initilize
+		
 		// Punto 1
 		// Poderes
 		altaVelocidad = null // TODO: constrir/obtener un poder de velocidad con rapidez = 2
@@ -65,7 +69,9 @@ describe "Superpoderoses" {
 		// Punto 5 
 		fragmentadorMonopolios = null // TODO: constrir/obtener un Metahumano con estrategia = 1, espiritualidad = 6 y poderes = vueloRasante
 		educadorPublico = null // TODO: constrir/obtener un Mago con poder acumulado = 12, estrategia = 1, espiritualidad = 6 y poderes = vueloRasante	
-	}
+}
+
+
 	
 	
 	/* ACLARACIÓN
