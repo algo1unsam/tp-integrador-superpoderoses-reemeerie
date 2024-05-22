@@ -7,87 +7,62 @@ describe "Superpoderoses" {
 	 * Si el diseño de la solución utiliza objetos bien conocidos en algunos casos entonces 
 	 * se debe remover la declaración de la variable y la línea en que se sugiere la instanciación.
 	 */
-
-	const altaVelocidad
-	const superVelocidad
-	const vueloRasante
-	const vueloAlto
-	const vueloRasanteAmplificado
-	const superVelocidadAmplificada
 	
-	const capitanaPatriaGrande
-	const plusvaliaCero
-	const usinaDeDerechos
-	
-	const cooperativaJusticiera
-	
-	const peligroSencillo
-	const peligroSencilloRadiactivo 
-	const peligroModerado
-	const peligroAlto
-	
-	const fragmentadorMonopolios
-	const educadorPublico
-		
-	
-	method initialize(){
 		
 		//aca pueden inicializar todo lo que quieran dentro de este describe "Superpoderoses", cada describe puede tener hasta 1 initilize
 		
 		// Punto 1
 		// Poderes
-		altaVelocidad = null // TODO: constrir/obtener un poder de velocidad con rapidez = 2
-		superVelocidad = null // TODO: constrir/obtener un poder de velocidad con rapidez = 3
-		vueloRasante = null // TODO: constrir/obtener un poder de vuelo con altura maxima = 10 y energia para despegue = 10
-		vueloAlto = null // TODO: constrir/obtener un poder de vuelo con altura maxima = 300 y energia para despegue = 200
-		vueloRasanteAmplificado = null // TODO: constrir/obtener un poder amplificador con poder base = vueloRasante y amplificador = 4
-		superVelocidadAmplificada = null // TODO: constrir/obtener un poder amplificador con poder base = superVelocidad y amplificador = 3
+		const altaVelocidad = new Velocidad(agilidad = 0, fuerza = 0, habilidadEspecial = 0, rapidez = 2) // TODO: constrir/obtener un poder de velocidad con rapidez = 2
+		const superVelocidad = new Velocidad(agilidad = 0, fuerza = 0, habilidadEspecial = 0, rapidez = 3) // TODO: constrir/obtener un poder de velocidad con rapidez = 3
+		const vueloRasante = new Vuelo(alturaMaxima = 10, fuerza = 0, habilidadEspecial = 0, agilidad = 0, energiaDespegue = 10) // TODO: constrir/obtener un poder de vuelo con altura maxima = 10 y energia para despegue = 10
+		const vueloAlto = new Vuelo(alturaMaxima = 300, fuerza = 0, habilidadEspecial = 0, agilidad = 0, energiaDespegue = 200) // TODO: constrir/obtener un poder de vuelo con altura maxima = 300 y energia para despegue = 200
+		const vueloRasanteAmplificado = new PoderAmplificador(poderBase = vueloRasante, amplificador = 4, fuerza = 0, habilidadEspecial = 0, agilidad = 0) // TODO: constrir/obtener un poder amplificador con poder base = vueloRasante y amplificador = 4
+		const superVelocidadAmplificada = new PoderAmplificador(poderBase = superVelocidad, amplificador = 3, fuerza = 0, habilidadEspecial = 0, agilidad = 0) // TODO: constrir/obtener un poder amplificador con poder base = superVelocidad y amplificador = 3
 	
 		// Personajes 
-		capitanaPatriaGrande = null // TODO: constrir/obtener un personaje con estrategia = 3, espiritualidad = 5 y poderes = superVelocidadAmplificada y vueloAlto
-		plusvaliaCero = null // TODO: constrir/obtener un personaje con estrategia = 2, espiritualidad = 4 y poderes = altaVelocidad y vueloRasanteAmplificado
-		usinaDeDerechos = null // TODO: constrir/obtener un personaje con estrategia = 1, espiritualidad = 6 y poderes = vueloRasante
+		const capitanaPatriaGrande = new Heroe(estrategia = 3, espiritualidad = 5, poderes = [superVelocidadAmplificada, vueloAlto] ) // TODO: constrir/obtener un personaje con estrategia = 3, espiritualidad = 5 y poderes = superVelocidadAmplificada y vueloAlto
+		const plusvaliaCero = new Heroe(estrategia = 2, espiritualidad = 4, poderes = [altaVelocidad, vueloRasanteAmplificado]) // TODO: constrir/obtener un personaje con estrategia = 2, espiritualidad = 4 y poderes = altaVelocidad y vueloRasanteAmplificado
+		const usinaDeDerechos = new Heroe(estrategia = 1, espiritualidad = 6, poderes = [vueloRasante]) // TODO: constrir/obtener un personaje con estrategia = 1, espiritualidad = 6 y poderes = vueloRasante
 		
 		// Punto 2
 		// Equipo 
-		cooperativaJusticiera = null // TODO: constrir/obtener un conformado por capitanaPatriaGrande, plusvaliaCero y usinaDeDerechos
+		const cooperativaJusticiera = new Equipo(miembros = [capitanaPatriaGrande, plusvaliaCero, usinaDeDerechos]) // TODO: constrir/obtener un conformado por capitanaPatriaGrande, plusvaliaCero y usinaDeDerechos
 		
 		// Punto 3 
 		// Peligros
-		peligroSencillo = null // TODO: constrir/obtener un peligro con capacidad de batalla = 30 y NO tiene desechos radiactivos  
-		peligroSencilloRadiactivo = null // TODO: constrir/obtener un peligro con capacidad de batalla = 30 y tiene desechos radiactivos
-		peligroModerado = null // TODO: constrir/obtener un peligro con capacidad de batalla = 50 y NO tiene desechos radiactivos
-		peligroAlto = null // TODO: constrir/obtener un peligro con capacidad de batalla = 400 y tiene desechos radiactivos
+		const peligroSencillo = new Peligro(capacidadDeBatalla = 30, desechosRadioactivos = false, capacidadJugadores = 0, nivelDeComplejidad = 0) // TODO: constrir/obtener un peligro con capacidad de batalla = 30 y NO tiene desechos radiactivos  
+		const peligroSencilloRadiactivo = new Peligro(capacidadDeBatalla = 30, desechosRadioactivos = true, capacidadJugadores = 0, nivelDeComplejidad = 0) // TODO: constrir/obtener un peligro con capacidad de batalla = 30 y tiene desechos radiactivos
+		const peligroModerado = new Peligro(capacidadDeBatalla = 50, desechosRadioactivos = false, capacidadJugadores = 0, nivelDeComplejidad = 0) // TODO: constrir/obtener un peligro con capacidad de batalla = 50 y NO tiene desechos radiactivos
+		const peligroAlto = new Peligro(capacidadDeBatalla = 400, desechosRadioactivos = true, capacidadJugadores = 0, nivelDeComplejidad = 0) // TODO: constrir/obtener un peligro con capacidad de batalla = 400 y tiene desechos radiactivos
 
         // Punto 4
+        peligroSencillo.nivelDeComplejidad(1).capacidadJugadores(2)
+        peligroSencilloRadiactivo.nivelDeComplejidad(1).capacidadJugadores(2)
+        peligroModerado.nivelDeComplejidad(2).capacidadJugadores(1)
+        peligroAlto.nivelDeComplejidad(3).capacidadJugadores(2)
         // TODO: agregar al peligroSencillo nivel de complejidad = 1 y cantidad de personajes que se banca en simultaneo = 2
         // TODO: agregar al peligroSencilloRadiactivo nivel de complejidad = 1 y cantidad de personajes que se banca en simultaneo = 2
         // TODO: agregar al peligroModerado nivel de complejidad = 2 y cantidad de personajes que se banca en simultaneo = 1
         // TODO: agregar al peligroAlto nivel de complejidad = 3 y cantidad de personajes que se banca en simultaneo = 2
         
-
 		// Punto 5 
-		fragmentadorMonopolios = null // TODO: constrir/obtener un Metahumano con estrategia = 1, espiritualidad = 6 y poderes = vueloRasante
-		educadorPublico = null // TODO: constrir/obtener un Mago con poder acumulado = 12, estrategia = 1, espiritualidad = 6 y poderes = vueloRasante	
-}
+		const fragmentadorMonopolios = new Metahumano(estrategia = 1, espiritualidad = 6, poderes = [vueloRasante]) // TODO: constrir/obtener un Metahumano con estrategia = 1, espiritualidad = 6 y poderes = vueloRasante
+		const educadorPublico = new Mago(estrategia = 1, poderAcumulado = 12, espiritualidad = 6, poderes = [vueloRasante]) // TODO: constrir/obtener un Mago con poder acumulado = 12, estrategia = 1, espiritualidad = 6 y poderes = vueloRasante	
 
 
 	
-	
-	/* ACLARACIÓN
-	 * Los tests están comentados para evitar errores y warnings, así poder ir incorporándolos 
-	 * a medida que se avanza con la solución del ejercicio
-	 */
-	
-/*
 	test "punto 1.1 capacidad de batalla que aporta un poder" {
+		assert.equals(576, superVelocidadAmplificada.capacidadDeBatalla(capitanaPatriaGrande))
+		
+		
 		// TODO: Verificar que la capacidad de batalla que le aporta superVelocidadAmplificada a capitanaPatriaGrande es 576
 		// TODO: Verificar que la capacidad de batalla que le aporta vueloAlto a capitanaPatriaGrande es 876
 		// TODO: Verificar que la capacidad de batalla que le aporta altaVelocidad a plusvaliaCero es 72
 		// TODO: Verificar que la capacidad de batalla que le aporta vueloRasanteAmplificado a plusvaliaCero es 144
 		// TODO: Verificar que la capacidad de batalla que le aporta vueloRasante a usinaDeDerechos es 49
 	}
- */	
+	
 
 /*
 	test "punto 1.2 capacidad de batalla de un personaje" {
