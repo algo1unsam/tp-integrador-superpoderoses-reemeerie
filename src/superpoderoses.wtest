@@ -27,24 +27,14 @@ describe "Superpoderoses" {
 		
 		// Punto 2
 		// Equipo 
-		const cooperativaJusticiera = new Equipo(miembros = [capitanaPatriaGrande, plusvaliaCero, usinaDeDerechos]) // TODO: constrir/obtener un conformado por capitanaPatriaGrande, plusvaliaCero y usinaDeDerechos
+		const cooperativaJusticiera = new Equipo(miembros = [capitanaPatriaGrande,plusvaliaCero,usinaDeDerechos]) // TODO: constrir/obtener un conformado por capitanaPatriaGrande, plusvaliaCero y usinaDeDerechos
 		
 		// Punto 3 
 		// Peligros
-		const peligroSencillo = new Peligro(capacidadDeBatalla = 30, desechosRadioactivos = false, capacidadJugadores = 0, nivelDeComplejidad = 0) // TODO: constrir/obtener un peligro con capacidad de batalla = 30 y NO tiene desechos radiactivos  
-		const peligroSencilloRadiactivo = new Peligro(capacidadDeBatalla = 30, desechosRadioactivos = true, capacidadJugadores = 0, nivelDeComplejidad = 0) // TODO: constrir/obtener un peligro con capacidad de batalla = 30 y tiene desechos radiactivos
-		const peligroModerado = new Peligro(capacidadDeBatalla = 50, desechosRadioactivos = false, capacidadJugadores = 0, nivelDeComplejidad = 0) // TODO: constrir/obtener un peligro con capacidad de batalla = 50 y NO tiene desechos radiactivos
-		const peligroAlto = new Peligro(capacidadDeBatalla = 400, desechosRadioactivos = true, capacidadJugadores = 0, nivelDeComplejidad = 0) // TODO: constrir/obtener un peligro con capacidad de batalla = 400 y tiene desechos radiactivos
-
-        // Punto 4
-        peligroSencillo.nivelDeComplejidad(1).capacidadJugadores(2)
-        peligroSencilloRadiactivo.nivelDeComplejidad(1).capacidadJugadores(2)
-        peligroModerado.nivelDeComplejidad(2).capacidadJugadores(1)
-        peligroAlto.nivelDeComplejidad(3).capacidadJugadores(2)
-        // TODO: agregar al peligroSencillo nivel de complejidad = 1 y cantidad de personajes que se banca en simultaneo = 2
-        // TODO: agregar al peligroSencilloRadiactivo nivel de complejidad = 1 y cantidad de personajes que se banca en simultaneo = 2
-        // TODO: agregar al peligroModerado nivel de complejidad = 2 y cantidad de personajes que se banca en simultaneo = 1
-        // TODO: agregar al peligroAlto nivel de complejidad = 3 y cantidad de personajes que se banca en simultaneo = 2
+		const peligroSencillo = new Peligro(capacidadDeBatalla = 30, desechosRadioactivos = false, capacidadJugadores = 2, nivelDeComplejidad = 1) // TODO: constrir/obtener un peligro con capacidad de batalla = 30 y NO tiene desechos radiactivos  
+		const peligroSencilloRadiactivo = new Peligro(capacidadDeBatalla = 30, desechosRadioactivos = true, capacidadJugadores = 2, nivelDeComplejidad = 1) // TODO: constrir/obtener un peligro con capacidad de batalla = 30 y tiene desechos radiactivos
+		const peligroModerado = new Peligro(capacidadDeBatalla = 50, desechosRadioactivos = false, capacidadJugadores = 1, nivelDeComplejidad = 2) // TODO: constrir/obtener un peligro con capacidad de batalla = 50 y NO tiene desechos radiactivos
+		const peligroAlto = new Peligro(capacidadDeBatalla = 400, desechosRadioactivos = true, capacidadJugadores = 2, nivelDeComplejidad = 3) // TODO: constrir/obtener un peligro con capacidad de batalla = 400 y tiene desechos radiactivos
         
 		// Punto 5 
 		const fragmentadorMonopolios = new Metahumano(estrategia = 1, espiritualidad = 6, poderes = [vueloRasante]) // TODO: constrir/obtener un Metahumano con estrategia = 1, espiritualidad = 6 y poderes = vueloRasante
@@ -54,112 +44,134 @@ describe "Superpoderoses" {
 	
 	test "punto 1.1 capacidad de batalla que aporta un poder" {
 		assert.equals(576, superVelocidadAmplificada.capacidadDeBatalla(capitanaPatriaGrande))
-		
-		
+		assert.equals(876, vueloAlto.capacidadDeBatalla(capitanaPatriaGrande))
+		assert.equals(72, altaVelocidad.capacidadDeBatalla(plusvaliaCero))
+		assert.equals(144, vueloRasanteAmplificado.capacidadDeBatalla(plusvaliaCero))
+		assert.equals(49, vueloRasante.capacidadDeBatalla(usinaDeDerechos))
 		// TODO: Verificar que la capacidad de batalla que le aporta superVelocidadAmplificada a capitanaPatriaGrande es 576
 		// TODO: Verificar que la capacidad de batalla que le aporta vueloAlto a capitanaPatriaGrande es 876
 		// TODO: Verificar que la capacidad de batalla que le aporta altaVelocidad a plusvaliaCero es 72
 		// TODO: Verificar que la capacidad de batalla que le aporta vueloRasanteAmplificado a plusvaliaCero es 144
 		// TODO: Verificar que la capacidad de batalla que le aporta vueloRasante a usinaDeDerechos es 49
 	}
-	
 
-/*
 	test "punto 1.2 capacidad de batalla de un personaje" {
+		assert.equals(1452, capitanaPatriaGrande.capacidadDeBatalla())
+		assert.equals(216, plusvaliaCero.capacidadDeBatalla())
+		assert.equals(49, usinaDeDerechos.capacidadDeBatalla())
 		// TODO: Verificar que la capacidad de batalla de capitanaPatriaGrande es 1452
 		// TODO: Verificar que la capacidad de batalla de plusvaliaCero es 216
 		// TODO: Verificar que la capacidad de batalla de usinaDeDerechos es 49
-	}
- */	
+	}	
 
-/*
 	test "punto 2.1 Saber el miembro vulnerable de un equipo" {
+		assert.equals(usinaDeDerechos, cooperativaJusticiera.masDebil())
 		// TODO: Verificar que miembro mas vulnerable de cooperativaJusticiera es usinaDeDerechos
 	}
- */	
 
-/*
+
 	test "punto 2.2 Saber la calidad de un equipo" {
+		assert.equals(572.33333, cooperativaJusticiera.calidad())
 		// TODO: Verificar que la calidad de cooperativaJusticiera es 572.33333
 	}
- */	
 
-/*
 	test "punto 2.3 Saber los mejores poderes de un equipo" {
+		assert.equals([vueloAlto, vueloRasanteAmplificado, vueloRasante], cooperativaJusticiera.mejoresPoderes()) //Da bien, devuelve un array de 3 elementos (los 3 poderes)
 		// TODO: Verificar que los mejores poderes de cooperativaJusticiera son vueloAlto, vueloRasanteAmplificado y vueloRasante
 	}
- */	
 	
-/*
 	test "punto 3.1 personajes contra el peligro" {
+		assert.that(peligroSencillo.afrontablePara(capitanaPatriaGrande))
+		assert.that(peligroSencillo.afrontablePara(plusvaliaCero))
+		assert.that(peligroSencillo.afrontablePara(usinaDeDerechos))
 		// TODO: Verificar que peligroSencillo puede ser afrontado por capitanaPatriaGrande
 		// TODO: Verificar que peligroSencillo puede ser afrontado por plusvaliaCero
 		// TODO: Verificar que peligroSencillo puede ser afrontado por usinaDeDerechos
-
+		assert.that(peligroSencilloRadiactivo.afrontablePara(capitanaPatriaGrande))
+		assert.that(peligroSencilloRadiactivo.afrontablePara(plusvaliaCero))
+		assert.notThat(peligroSencilloRadiactivo.afrontablePara(usinaDeDerechos))
 		// TODO: Verificar que peligroSencilloRadiactivo puede ser afrontado por capitanaPatriaGrande
 		// TODO: Verificar que peligroSencilloRadiactivo puede ser afrontado por plusvaliaCero
 		// TODO: Verificar que peligroSencilloRadiactivo NO puede ser afrontado por usinaDeDerechos
-
+		assert.that(peligroModerado.afrontablePara(capitanaPatriaGrande))
+		assert.that(peligroModerado.afrontablePara(plusvaliaCero))
+		assert.notThat(peligroModerado.afrontablePara(usinaDeDerechos))
 		// TODO: Verificar que peligroModerado puede ser afrontado por capitanaPatriaGrande
 		// TODO: Verificar que peligroModerado puede ser afrontado por plusvaliaCero
 		// TODO: Verificar que peligroModerado NO puede ser afrontado por usinaDeDerechos
-	
+		assert.that(peligroAlto.afrontablePara(capitanaPatriaGrande))
+		assert.notThat(peligroAlto.afrontablePara(plusvaliaCero))
+		assert.notThat(peligroAlto.afrontablePara(usinaDeDerechos))
 		// TODO: Verificar que peligroAlto puede ser afrontado por capitanaPatriaGrande
 		// TODO: Verificar que peligroAlto NO puede ser afrontado por plusvaliaCero
 		// TODO: Verificar que peligroAlto NO puede ser afrontado por usinaDeDerechos
 	}
- */	
 	
-/*
 	test "punto 3.2 Saber si un peligro es sensato " {
+		assert.that(peligroSencillo.sensatoParaEquipo(cooperativaJusticiera))
+		assert.notThat(peligroSencilloRadiactivo.sensatoParaEquipo(cooperativaJusticiera))
+		assert.notThat(peligroModerado.sensatoParaEquipo(cooperativaJusticiera))
+		assert.notThat(peligroAlto.sensatoParaEquipo(cooperativaJusticiera))
 		// TODO: Verificar que peligroSencillo es sensato para cooperativaJusticiera
 		// TODO: Verificar que peligroSencilloRadiactivo NO es sensato para cooperativaJusticiera
 		// TODO: Verificar que peligroModerado NO es sensato para cooperativaJusticiera
 		// TODO: Verificar que peligroAlto NO es sensato para cooperativaJusticiera
 	}
- */	
 	
-/*
 	test "punto 4.1 Afrontar peligro individualmente: OK" {
+		usinaDeDerechos.afrontaPeligro(peligroSencillo)
+		assert.equals(2, usinaDeDerechos.estrategia())
 		// TODO: Hacer que usinaDeDerechos afronte a peligroSencillo 
 		// TODO: Verificar que la estrategia de usinaDeDerechos es 2
 	}
- */
 
-/*
 	test "punto 4.1 Afrontar peligro individualmente: no OK por radioactividad" {
+		usinaDeDerechos.afrontaPeligro(peligroSencilloRadiactivo)
+		assert.equals(1, usinaDeDerechos.estrategia())
 		// TODO: Hacer que usinaDeDerechos afronte a peligroSencilloRadiactivo (NO SE PUEDE!)
 		// TODO: Verificar que la estrategia de usinaDeDerechos es 1
 	}
- */
 	
-/*
+
 	test "punto 4.1 Afrontar peligro individualmente: no OK por capacidad de batalla" {
+		usinaDeDerechos.afrontaPeligro(peligroModerado)
+		assert.equals(1, usinaDeDerechos.estrategia())
 		// TODO: Hacer que usinaDeDerechos afronte a peligroModerado (NO SE PUEDE!)
 		// TODO: Verificar que la estrategia de usinaDeDerechos es 1
 	}
- */
 	
-/*
 	test "punto 4.2  Afrontar peligro (moderado) en equipo  " {
+		cooperativaJusticiera.afrontaPeligro(peligroModerado)
+		assert.equals(5, capitanaPatriaGrande.estrategia())
+		assert.equals(4, plusvaliaCero.estrategia()) // este test no va a pasar nunca porque peligroModerado tiene capacidad para 1 jugador, por ende plusvaliaCero no puede afrontarlo, solo capitana
+		assert.equals(1, usinaDeDerechos.estrategia())
 		// TODO: Hacer que cooperativaJusticiera afronte a peligroModerado
 		// TODO: Verificar que la estrategia de capitanaPatriaGrande es 5
 		// TODO: Verificar que la estrategia de plusvaliaCero es 4
 		// TODO: Verificar que la estrategia de usinaDeDerechos es 1		
 	}
- */
 
-/*
 	test "punto 4.2  Afrontar peligro (alto) en equipo (no ok)" {
+		cooperativaJusticiera.afrontaPeligro(peligroAlto)
+		assert.equals(3, capitanaPatriaGrande.estrategia()) // este test no va a pasar nunca porque capitana si puede afrontar el peligro
+		assert.equals(2, plusvaliaCero.estrategia())
+		assert.equals(1, usinaDeDerechos.estrategia())
 		// TODO: Hacer que cooperativaJusticiera afronte a peligroAlto (NO SE PUEDE!)
 		// TODO: Verificar que la estrategia de capitanaPatriaGrande es 3
 		// TODO: Verificar que la estrategia de plusvaliaCero es 2
 		// TODO: Verificar que la estrategia de usinaDeDerechos es 1
 	}
- */	
 
-/*
 	test "punto 5.1  Metahumano " {
+		assert.equals(98, fragmentadorMonopolios.capacidadDeBatalla())
+		assert.that(peligroSencilloRadiactivo.afrontablePara(fragmentadorMonopolios))
+		fragmentadorMonopolios.afrontaPeligro(peligroSencilloRadiactivo)
+		assert.equals(2, fragmentadorMonopolios.estrategia())
+		assert.equals(7, fragmentadorMonopolios.espiritualidad())
+		assert.notThat(peligroAlto.afrontablePara(fragmentadorMonopolios))
+		fragmentadorMonopolios.afrontaPeligro(peligroAlto)
+		assert.equals(2, fragmentadorMonopolios.estrategia())
+		assert.equals(7, fragmentadorMonopolios.espiritualidad()) //mismos valores ya que no se logra enfrentar al peligroAlto
 		// TODO: Verificar que la capacidad de batalla de fragmentadorMonopolios es 98
 		// TODO: Verificar que peligroSencilloRadiactivo puede ser afrontado por fragmentadorMonopolios
 		// TODO: Hacer que fragmentadorMonopolios afronte a peligroSencilloRadiactivo
@@ -168,24 +180,31 @@ describe "Superpoderoses" {
 		// TODO: Verificar que peligroAlto NO puede ser afrontado por fragmentadorMonopolios
 		// TODO: Hacer que fragmentadorMonopolios afronte a peligroAlto (NO SE PUEDE!)
 	}
- */
 
-/*
 	test "punto 5.2  Mago " {
+		assert.equals(110 , educadorPublico.capacidadDeBatalla())
+		assert.notThat(peligroAlto.afrontablePara(educadorPublico))
+		educadorPublico.afrontaPeligro(peligroAlto)
 		// TODO: Verificar que la capacidad de batalla de educadorPublico es 110
 		// TODO: Verificar que peligroAlto NO puede ser afrontado por educadorPublico
 		// TODO: Hacer que educadorPublico afronte a peligroAlto (NO SE PUEDE!)
-
+		assert.that(peligroSencilloRadiactivo.afrontablePara(educadorPublico))
+		educadorPublico.afrontaPeligro(peligroSencilloRadiactivo)
+		assert.equals(2, educadorPublico.estrategia())
+		assert.equals(7, educadorPublico.espiritualidad())
+		assert.equals(7, educadorPublico.poderAcumulado())
 		// TODO: Verificar que peligroSencilloRadiactivo puede ser afrontado por educadorPublico
 		// TODO: Hacer que educadorPublico afronte a peligroSencilloRadiactivo
 		// TODO: Verificar que la estrategia de educadorPublico es 2
 		// TODO: Verificar que la espiritualidad de educadorPublico es 7
 		// TODO: Verificar que el poder acumulado de educadorPublico es 7
-		
+		educadorPublico.afrontaPeligro(peligroSencilloRadiactivo)
+		assert.equals(2, educadorPublico.estrategia())
+		assert.equals(7, educadorPublico.espiritualidad())
+		assert.equals(2, educadorPublico.poderAcumulado())
 		// TODO: Hacer que educadorPublico afronte a peligroSencilloRadiactivo
 		// TODO: Verificar que la estrategia de educadorPublico es 2
 		// TODO: Verificar que la espiritualidad de educadorPublico es 7
 		// TODO: Verificar que el poder acumulado de educadorPublico es 2
 	}
- */
 }

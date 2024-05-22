@@ -1,15 +1,18 @@
 class Heroe {
-	var property espiritualidad = 0
-	var property estrategia = 0 
+	var property espiritualidad
+	var property estrategia 
 	const poderes = []
 	
+	method poderes(){
+		return poderes
+	}
 	method agregarPoder(poder){
 		poderes.add(poder)
 	}
 	
 	method capacidadDeBatalla() {
 		var total = 0
-		poderes.forEach{poder => total += poder.capacidadDeBatalla()}
+		poderes.forEach{poder => total += poder.capacidadDeBatalla(self)}
 		return total
 	}
 	
@@ -24,15 +27,18 @@ class Heroe {
 		
 		return flag
 	}
+	
 	method afrontaPeligro(peligro){
-		estrategia += peligro.nivelDeComplejidad()
+		if(peligro.afrontablePara(self)){
+			estrategia += peligro.nivelDeComplejidad()	
+		}
 	}
 }
 
 class Metahumano inherits Heroe{
 	override method capacidadDeBatalla() {
 		var total = 0
-		poderes.forEach{poder => total += poder.capacidadDeBatalla()}
+		poderes.forEach{poder => total += poder.capacidadDeBatalla(self)}
 		return (total * 2)
 	}
 	
@@ -41,8 +47,10 @@ class Metahumano inherits Heroe{
 	}
 	
 	override method afrontaPeligro(peligro){
-		estrategia += peligro.nivelDeComplejidad()
-		espiritualidad += peligro.nivelDeComplejidad()
+		if(peligro.afrontablePara(self)){
+			estrategia += peligro.nivelDeComplejidad()
+			espiritualidad += peligro.nivelDeComplejidad()
+		}
 	}
 }
 
@@ -51,20 +59,22 @@ class Mago inherits Metahumano{
 	
 	override method capacidadDeBatalla() {
 		var total = 0
-		poderes.forEach{poder => total += poder.capacidadDeBatalla()}
+		poderes.forEach{poder => total += poder.capacidadDeBatalla(self)}
 		return ((total * 2) + poderAcumulado)
 	}
 	
 	override method afrontaPeligro(peligro){
-		if(poderAcumulado > 10){
-			estrategia += peligro.nivelDeComplejidad()
-			espiritualidad += peligro.nivelDeComplejidad()
-		}
+		if(peligro.afrontablePara(self)){
+			if(poderAcumulado > 10){
+				estrategia += peligro.nivelDeComplejidad()
+				espiritualidad += peligro.nivelDeComplejidad()
+			}
 		
-		if(poderAcumulado >= 5){
-			poderAcumulado -= 5
-		} else {
-			poderAcumulado = 0
+			if(poderAcumulado >= 5){
+				poderAcumulado -= 5
+			} else {
+				poderAcumulado = 0
+			}
 		}
 	}
 }
@@ -74,7 +84,11 @@ class Poder{
 	var property fuerza
 	var property habilidadEspecial
 	
-	method capacidadDeBatalla(){
+	method capacidadDeBatalla(personaje){
+		self.agilidad(personaje)
+		self.fuerza(personaje)
+		self.habilidadEspecial(personaje)
+		
 		return ((agilidad + fuerza) * habilidadEspecial)
 	}
 }
@@ -130,18 +144,18 @@ class PoderAmplificador inherits Poder{
 	var property poderBase
 	var property amplificador
 	
-	override method agilidad(){
-		agilidad = poderBase.agilidad()
+	override method agilidad(personaje){
+		agilidad = poderBase.agilidad(personaje)
 		return agilidad
 	}
 	
-	override method fuerza(){
-		fuerza = poderBase.fuerza()
+	override method fuerza(personaje){
+		fuerza = poderBase.fuerza(personaje)
 		return fuerza
 	}
 	
-	override method habilidadEspecial(){
-		habilidadEspecial = poderBase.habilidadEspecial() * amplificador
+	override method habilidadEspecial(personaje){
+		habilidadEspecial = poderBase.habilidadEspecial(personaje) * amplificador
 		return habilidadEspecial
 	}
 	method otorgaInmunidad(){
@@ -192,7 +206,7 @@ class Equipo {
 				if(aux == null){
 					aux = poder
 				}
-				if(poder.capacidadDeBatalla() > aux.capacidadDeBatalla()){
+				if(poder.capacidadDeBatalla(miembro) > aux.capacidadDeBatalla(miembro)){
 					aux = poder
 				}
 			}
@@ -211,7 +225,7 @@ class Equipo {
 			}
 		}
 		
-		return miembrosHabilitados
+		miembrosHabilitados.forEach{miembro => miembro.afrontaPeligro(peligro)}
 	}
 }
 
